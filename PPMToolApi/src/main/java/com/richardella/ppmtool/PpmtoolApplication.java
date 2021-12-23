@@ -1,4 +1,4 @@
-package com.richardella.demo;
+package com.richardella.ppmtool;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
