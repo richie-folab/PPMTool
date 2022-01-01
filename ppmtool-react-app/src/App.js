@@ -14,7 +14,8 @@ class App extends Component {
           <Header />
 
           <Routes>
-            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/addProject" element={<AddProject />} />
           </Routes>
         </div>
