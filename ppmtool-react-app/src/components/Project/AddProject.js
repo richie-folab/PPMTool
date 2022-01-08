@@ -15,11 +15,20 @@ class AddProject extends Component {
       description: "",
       startDate: "",
       endDate: "",
+      errors: {},
     };
 
     //bind all the controls to the respective events
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  //Lifecycle Hook
+  //If the component receives any error, set the error to the errors state variable
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange = (e) => {
@@ -43,6 +52,8 @@ class AddProject extends Component {
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div className="project">
         {
@@ -69,6 +80,7 @@ class AddProject extends Component {
                     value={this.state.projectName}
                     onChange={this.onChange}
                   />
+                  <p>{errors.projectName}</p>
                 </div>
                 <br />
                 <div className="form-group">
@@ -129,6 +141,12 @@ class AddProject extends Component {
 
 AddProject.propTypes = {
   createProject: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
-export default connect(null, { createProject })(AddProject);
+//If there is any error, map  the error state variable to Props
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { createProject })(AddProject);
