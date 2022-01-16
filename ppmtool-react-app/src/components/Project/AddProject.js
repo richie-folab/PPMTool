@@ -24,11 +24,10 @@ class AddProject extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //Lifecycle Hook
   //If the component receives any error, set the error to the errors state variable
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      return { errors: nextProps.errors };
     }
   }
 
