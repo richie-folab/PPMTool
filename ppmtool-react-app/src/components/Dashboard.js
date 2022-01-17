@@ -6,11 +6,6 @@ import CreateProjectButton from "./Project/CreateProjectButton";
 import ProjectItem from "./Project/ProjectItem";
 
 class Dashboard extends Component {
-  // constructor() {
-  //   super();
-
-  //   this.props.getProjects();
-  // }
   componentDidMount() {
     this.props.getProjects();
   }
