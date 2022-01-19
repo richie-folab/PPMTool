@@ -4,14 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { createBrowserHistory } from "history";
-import { useParams } from "react-router-dom";
-
-export function withRouter(Children) {
-  return (props) => {
-    const match = { params: useParams() };
-    return <Children {...props} match={match} />;
-  };
-}
 
 class UpdateProject extends Component {
   componentDidMount() {
@@ -87,13 +79,11 @@ class UpdateProject extends Component {
 
 UpdateProject.propTypes = {
   getProject: PropTypes.func.isRequired,
-  project: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  prooject: state.project.project,
-});
+//If there is any error, map  the error state variable to Props
+// const mapStateToProps = (state) => ({
+//   errors: state.errors,
+// });
 
-export default connect(mapStateToProps, { getProject })(
-  withRouter(UpdateProject)
-);
+export default connect(null, { getProject })(UpdateProject);
